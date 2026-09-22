@@ -82,6 +82,12 @@ test.describe('Movie Search Feature', () => {
 4. **Validate**: Ensure tests pass consistently and cover the intended functionality.
 5. **Report**: Provide feedback on test results and any issues discovered.
 
+## Documentation Maintenance
+
+- Keep Playwright guidance aligned with the current app behavior, available pages, and accessibility goals.
+- Update the matching instructions and project-level guidance when the app adds or removes flows, pages, or user interactions.
+- Remove stale instructions that reference deprecated routes, test patterns, or tooling when the project evolves.
+
 ## Quality Checklist
 
 Before finalizing tests, ensure:
