@@ -32,6 +32,15 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 - When adding new functionality, make sure you update the README
 - Make sure all guidance in the Copilot Instructions file is updated with any relevant changes, including to project structure and scripts, and programming guidance
 
+### Documentation standards
+
+- Keep project documentation current whenever behavior, setup, routes, data contracts, scripts, or workflows change.
+- Update the relevant docs in place instead of creating duplicate or fragmented notes; prefer the README and the applicable instruction files over adding one-off markdown files.
+- Documentation should explain purpose, scope, and any required setup or testing steps for the change.
+- For UI, data, and database changes, document the affected files, schema changes, and user-facing impact clearly enough for a teammate to understand the change without reading the implementation.
+- If a change affects contributor workflow, update the relevant instructions and project guidance in `.github/` so the repository stays internally consistent.
+- Do not leave stale instructions behind; remove or revise outdated guidance when a feature or process changes.
+
 ### Code formatting requirements
 
 - Use TypeScript with explicit types for function parameters and return values, especially in the data layer (`db/`, `src/lib/`)
