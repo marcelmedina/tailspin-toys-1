@@ -24,6 +24,19 @@ test.describe('Game Listing and Navigation', () => {
     });
   });
 
+  test('should display a rating or unavailable label on every game card', async ({ page }) => {
+    await test.step('Navigate to homepage', async () => {
+      await page.goto('/');
+    });
+
+    await test.step('Verify every game card includes rating information', async () => {
+      const gameCards = page.getByTestId('game-card');
+      const ratings = page.getByTestId('game-rating');
+
+      await expect(ratings).toHaveCount(await gameCards.count());
+    });
+  });
+
   test('should navigate to correct game details page when clicking on a game', async ({ page }) => {
     let gameId: string | null;
     let gameTitle: string | null;
