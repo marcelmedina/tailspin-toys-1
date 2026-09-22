@@ -57,6 +57,10 @@ npm run db:export     # write the seeded catalog to db/catalog.json
 > [!NOTE]
 > Seeding is idempotent — it skips games that already exist (matched by title) rather than reconciling changed rows. CI always starts from a clean database, so it reflects `games.csv` exactly. Locally, if you edit or remove rows in `games.csv`, delete `tailspin.db` and re-run `npm run db:setup` to fully regenerate.
 
+## Catalog filters
+
+The home page catalog can be filtered in place by category and publisher. Multiple selected categories use OR semantics, while the publisher filter is single-select; selecting both applies the category and publisher constraints together. Filtering is browser-side over the statically rendered catalog, so it does not require a backend route or database migration. The data-access helpers in `src/lib/games.ts` provide ordered category/publisher options and reusable combined filtering for tests and future pages.
+
 ## Running tests
 
 ```bash
