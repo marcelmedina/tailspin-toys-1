@@ -77,6 +77,12 @@ describe('getAllGames', () => {
 - Ordering guarantees (alphabetical by title) — static builds depend on this being deterministic
 - Determinism of seed-derived values
 
+## Documentation Maintenance
+
+- Keep unit-test guidance synchronized with the actual data layer contracts, fixtures, and schema changes.
+- Update the related instructions and project docs together when test coverage, helper APIs, or data contracts change.
+- Remove outdated guidance that references obsolete test helpers, routes, or database behaviors.
+
 ## Best Practices
 
 - Follow Arrange-Act-Assert.

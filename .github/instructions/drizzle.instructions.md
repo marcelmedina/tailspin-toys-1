@@ -63,6 +63,12 @@ Seed-derived values must be reproducible across builds. Derive star ratings from
 
 Unit-test transforms directly and helpers against `createTestDatabase()`. See [`unit-tests.instructions.md`](unit-tests.instructions.md).
 
+## Documentation Maintenance
+
+- Keep the data-layer documentation aligned with the schema, migration, and test workflow as changes land.
+- Update related guidance in `.github/copilot-instructions.md` and the instruction files when adding new tables, helpers, transforms, or data contracts.
+- Remove stale instructions that reference deprecated seed, migration, or testing workflows.
+
 ## Node.js requirement
 
 Node.js 22.13 or later is required because the data layer uses the built-in `node:sqlite` module without an experimental flag. Do not introduce third-party SQLite drivers that ship platform-specific binaries.

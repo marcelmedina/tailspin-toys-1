@@ -51,6 +51,13 @@ Refer to technology-specific instruction files:
 - Use props for configuration, not duplication
 - Document component APIs with TypeScript types
 
+## Documentation Maintenance
+
+- Keep project documentation current whenever component behavior, accessibility guidance, or UI conventions change.
+- Update the relevant instruction files and project guidance in `.github/` in place rather than creating duplicate or stale notes.
+- When a UI change affects contributor workflow, revise the matching guidance in `.github/copilot-instructions.md` and the applicable instruction files together.
+- Remove outdated examples or rules when the design system or testing expectations change.
+
 ## Development Workflow
 
 1. **Choose the right tool**: 

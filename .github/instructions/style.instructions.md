@@ -52,3 +52,9 @@ ALL UI components MUST use dark theme colors:
 - Smooth transitions: `transition-all duration-200 ease-in-out`
 - Shadows for depth: `shadow-md`, `shadow-lg`, `shadow-xl`
 - Focus states for accessibility: `focus:ring-2 focus:ring-blue-500`
+
+## Documentation Maintenance
+
+- Keep Tailwind and component styling guidance aligned with current dark-theme patterns and responsive design requirements.
+- Update `.github/copilot-instructions.md` and the relevant instruction files together when styling conventions or utility patterns change.
+- Remove guidance that conflicts with the current Tailwind v4 setup or the app's dark-mode design system.
