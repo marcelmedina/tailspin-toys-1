@@ -106,6 +106,8 @@ const game = await getGameById(getDatabase(), Number(id));
 
 There is no Svelte/React layer. When a page genuinely needs client behaviour, add a scoped Astro `<script>` using standard DOM APIs. Prefer native interactive elements (`<button>`, `<a href>`) so keyboard and focus behaviour come for free.
 
+The home page's catalog filters are an example of this pattern: category checkboxes and a publisher select filter the statically rendered cards in place, update the live result count, and expose an accessible empty state without a runtime API.
+
 ## TypeScript
 
 - Use TypeScript for type-safe props

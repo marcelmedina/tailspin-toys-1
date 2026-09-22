@@ -24,6 +24,54 @@ test.describe('Game Listing and Navigation', () => {
     });
   });
 
+  test.describe('Game Listing Filters', () => {
+    test.beforeEach(async ({ page }) => {
+      await page.goto('/');
+      await expect(page.getByTestId('games-grid')).toBeVisible();
+    });
+
+    test('filters games by category', async ({ page }) => {
+      const categoryFilter = page.getByLabel('Strategy');
+      const visibleCards = page.locator('[data-testid="game-card"]:not(.hidden)');
+
+      await categoryFilter.check();
+
+      await expect(page.getByTestId('filter-results-count')).toHaveText('Showing 4 games');
+      await expect(visibleCards).toHaveCount(4);
+      await expect(visibleCards.first().getByTestId('game-category')).toHaveText('Strategy');
+    });
+
+    test('filters games by publisher', async ({ page }) => {
+      const publisherFilter = page.getByTestId('publisher-filter');
+
+      await publisherFilter.selectOption({ label: 'CodeForge Studios' });
+
+      await expect(page.getByTestId('filter-results-count')).toHaveText('Showing 6 games');
+      await expect(page.locator('[data-testid="game-card"]:not(.hidden)')).toHaveCount(6);
+      await expect(page.locator('[data-testid="game-card"]:not(.hidden)').first().getByTestId('game-publisher')).toHaveText('CodeForge Studios');
+    });
+
+    test('combines category and publisher filters', async ({ page }) => {
+      await page.getByLabel('Strategy').check();
+      await page.getByTestId('publisher-filter').selectOption({ label: 'CodeForge Studios' });
+
+      await expect(page.getByTestId('filter-results-count')).toHaveText('Showing 1 game');
+      await expect(page.locator('[data-testid="game-card"]:not(.hidden)')).toHaveCount(1);
+      await expect(page.locator('[data-testid="game-card"]:not(.hidden)').first().getByTestId('game-title')).toHaveText('DevOps Dominion');
+    });
+
+    test('clears selected filters', async ({ page }) => {
+      await page.getByLabel('Strategy').check();
+      await page.getByTestId('publisher-filter').selectOption({ label: 'CodeForge Studios' });
+      await page.getByTestId('reset-filters').click();
+
+      await expect(page.getByTestId('filter-results-count')).toHaveText('Showing 21 games');
+      await expect(page.locator('[data-testid="game-card"]:not(.hidden)')).toHaveCount(21);
+      await expect(page.getByLabel('Strategy')).not.toBeChecked();
+      await expect(page.getByTestId('publisher-filter')).toHaveValue('');
+    });
+  });
+
   test('should display a rating or unavailable label on every game card', async ({ page }) => {
     await test.step('Navigate to homepage', async () => {
       await page.goto('/');
